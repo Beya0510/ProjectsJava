@@ -123,41 +123,37 @@ public class Main {
             (" ~----( ~   Y.  )
             It looks like we will soon have more rabbits!""";
 
-            // write your code here
+            // Tableau contenant tous les habitats
             String[] habitats = {camel, lion, deer, goose, bat, rabbit};
 
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Please enter the number of the habitat you would like to view:");
 
-            int inputNumber = scanner.nextInt();
+            // Boucle principale pour que le programme fonctionne continuellement
+            while(true){
+                System.out.print("Please enter the number of the habitat you would like to view: ");
 
-            if(inputNumber >= 0 && inputNumber < habitats.length) {
-                System.out.println(habitats[inputNumber]);
-            }else {
-                System.out.println("Invalid input. Please try again.");
+                String userInput = scanner.nextLine();
+
+                // Vérifier si l'utilisateur veut quitter.
+                if(userInput.equals("exit")) {
+                    System.out.println("See you later");
+                    break;
+                }
+
+                try{
+                    int habitatNumber = Integer.parseInt(userInput);
+
+                    // Vérifier que e numéro est valide
+                    if(habitatNumber >= 0 && habitatNumber < habitats.length){
+                        System.out.println(habitats[habitatNumber]);
+                    }else{
+                        System.out.println("Invalid habitat number");
+                    }
+                }catch(NumberFormatException e){
+                    System.out.println("Invalid input. Please enter a number or 'exit' to quit.");
+                }
             }
 
-            System.out.println("---");
-        System.out.println("You've reached the end of the program. To check another habitat, please restart the watcher.\n");
-
-
-
-
-           System.out.println("Please enter the number of the habitat you would like to view:");
-        int inputNumber1 = scanner.nextInt();
-
-        switch(inputNumber1) {
-            case 0 -> System.out.println(camel);
-            case 1 -> System.out.println(lion);
-            case 2 -> System.out.println(deer);
-            case 3 -> System.out.println(goose);
-            case 4 -> System.out.println(bat);
-            case 5 -> System.out.println(rabbit);
-            default -> System.out.println("Invalid input. Please try again.");
-        }
-
-        System.out.println("---");
-        System.out.println("You've reached the end of the program. To check another habitat, please restart the watcher.\n");
 
 
         scanner.close();
